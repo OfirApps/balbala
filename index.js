@@ -5,9 +5,6 @@ const TWENTY_MINUTES = 1200000
 let client = null
 
 dateLog('Started index.js')
-initBot()
-
-function initBot() {
 	dateLog('Initializing bot')
 	venom
 		//	create bot with options
@@ -18,11 +15,9 @@ function initBot() {
 		.catch((err) => {
 			dateLog(err)
 		})
-}
 
-function startBot(_client) {
+function startBot(client) {
 	dateLog('Starting bot')
-	client = _client
 
 	//	restart bot every 20 minutos
 	//	stops working otherwise
@@ -35,21 +30,21 @@ function startBot(_client) {
 		initBot()
 	}, TWENTY_MINUTES)
 
-	//
-	// add your code here
-	//
-
-	// example: reply every message with "Hi!""
-	client.onMessage(reply)
+	client.onMessage((message) => {
+	datelog(message.body)
+    if (message.body === 'Hi' && message.isGroupMsg === false) {
+      client
+        .sendText(message.from, 'Welcome Venom 🕷')
+        .then((result) => {
+          console.log('Result: ', result); //return object success
+        })
+        .catch((erro) => {
+          console.error('Error when sending: ', erro); //return object error
+        });
+    }
+  });
 }
 
-function reply(message) {
-	const sender = message.from
-	dateLog(`Message received from: ${sender}`)
-	const replyText = 'Hi!'
-	client.sendText(sender, replyText)
-	dateLog(`Message: "${replyText}" sent to: ${sender}`)
-}
 
 //
 //	Aux
