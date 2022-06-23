@@ -10,13 +10,14 @@ dateLog('Started index.js')
 		//	create bot with options
 		.create(
 		'Pusay',
-		autoClose: 0,
 		(statusSession, session) => {
       console.log('Status Session: ', statusSession); //return isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail || autocloseCalled || desconnectedMobile || deleteToken
       //Create session wss return "serverClose" case server for close
       console.log('Session name: ', session);
     },
-	    {browserArgs: [
+	    {
+		    autoClose: 0,
+		    browserArgs: [
 			'--disable-web-security',
 			'--no-sandbox',
 			'--disable-web-security',
