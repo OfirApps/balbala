@@ -8,10 +8,15 @@ dateLog('Started index.js')
 	dateLog('Initializing bot')
 	venom
 		//	create bot with options
-		.create({
+		.create(
 		'Pusay',
 		autoClose: 0,
-		browserArgs: [
+		(statusSession, session) => {
+      console.log('Status Session: ', statusSession); //return isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail || autocloseCalled || desconnectedMobile || deleteToken
+      //Create session wss return "serverClose" case server for close
+      console.log('Session name: ', session);
+    },
+	    {browserArgs: [
 			'--disable-web-security',
 			'--no-sandbox',
 			'--disable-web-security',
@@ -33,13 +38,9 @@ dateLog('Started index.js')
 			'--ignore-certificate-errors',
 			'--ignore-ssl-errors',
 			'--ignore-certificate-errors-spki-list',
-		],
-	(statusSession, session) => {
-      console.log('Status Session: ', statusSession); //return isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail || autocloseCalled || desconnectedMobile || deleteToken
-      //Create session wss return "serverClose" case server for close
-      console.log('Session name: ', session);
-    }
-})
+		]}
+	
+)
 		// 	start bot
 		.then((client) => startBot(client))
 		// 	catch errors
