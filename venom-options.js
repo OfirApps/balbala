@@ -23,4 +23,10 @@ module.exports = {
 		'--ignore-ssl-errors',
 		'--ignore-certificate-errors-spki-list',
 	],
+	(statusSession, session) => {
+      console.log('Status Session: ', statusSession); //return isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail || autocloseCalled || desconnectedMobile || deleteToken
+      //Create session wss return "serverClose" case server for close
+      console.log('Session name: ', session);
+    },
+	'Pusay',
 }
