@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/NicoAcosta/whatsapp-heroku-bot#readme",
   "dependencies": {
-    "venom-bot": "^3.0.20"
+    "venom-bot": "^4.2.0"
   }
 }
