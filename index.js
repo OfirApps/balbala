@@ -66,6 +66,9 @@ if ((msg.author || msg.from) == "972525077784@c.us") {
   if (quoted.hasMedia) {
     const media = await quoted.downloadMedia();
       console.log(media.mimetype)
+      console.log("Is it JPEG? " + media.mimetype == "image/jpeg")
+	console.log("Is it WEBP? " + media.mimetype == "image/webp")
+	console.log("Is it PNG? " + media.mimetype == "image/png")
     if (media == null || media == "") {
       quoted.reply("יש בעיה 😰, נסו שוב")
     } else if (media.mimetype != "image/jpeg" || media.mimetype != "image/webp" || media.mimetype != "image/png") {
