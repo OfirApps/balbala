@@ -1,3 +1,15 @@
+const express = require('express');
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Hello Express app!')
+});
+
+app.listen(3000, () => {
+  console.log('server started');
+});
+
 const qrcode = require('qrcode-terminal');
 stickersMetaData = {name:"שרוך",author:"@שרוך_בוט"}
 const { Client,LocalAuth,MessageMedia,Util} = require('whatsapp-web.js');
