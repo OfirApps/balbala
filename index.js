@@ -56,7 +56,7 @@ if ((msg.author || msg.from) == "972525077784@c.us") {
       console.log(media.mimetype)
     if (media == null || media == "") {
       msg.reply("יש בעיה 😰, נסו שוב")
-    } else if (media.mimetype != "image/jpeg") {
+    } else if (media.mimetype != "image/jpeg" || media.mimetype != "image/webp" || media.mimetype != "image/png") {
       msg.reply("סוג המדיה לא עובד\n*תזכורת* הבוט לא תומך בגיפים או סרטונים")
     } else {
       msg.reply(media,null,{sendMediaAsSticker:true,stickerName:"",stickerAuthor:"@שרוך_בוט"});
@@ -68,7 +68,7 @@ if ((msg.author || msg.from) == "972525077784@c.us") {
       console.log(media.mimetype)
     if (media == null || media == "") {
       quoted.reply("יש בעיה 😰, נסו שוב")
-    } else if (media.mimetype != "image/jpeg") {
+    } else if (media.mimetype != "image/jpeg" || media.mimetype != "image/webp" || media.mimetype != "image/png") {
       quoted.reply("סוג המדיה לא עובד\n*תזכורת* הבוט לא תומך בגיפים או סרטונים")
     } else {
       msg.reply(media,null,{sendMediaAsSticker:true,stickerName:"",stickerAuthor:"@שרוך_בוט"});
