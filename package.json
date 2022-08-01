@@ -1,28 +1,32 @@
 {
-  "name": "whatsapp-heroku-bot",
+  "name": "this-time-we-are-getting-puppeteer",
   "version": "1.0.0",
-  "description": "WhatsApp heroku bot!",
+  "description": "Something like a test you know?",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "echo \"no file specified\" && exit=1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NicoAcosta/whatsapp-heroku-bot.git"
+    "url": "none"
   },
   "keywords": [
-    "WhatsApp",
-    "bot",
-    "Heroku"
+    "puppeteer"
   ],
-  "author": "Nicolás Acosta",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/NicoAcosta/whatsapp-heroku-bot/issues"
-  },
-  "homepage": "https://github.com/NicoAcosta/whatsapp-heroku-bot#readme",
+  "author": "coder100",
+  "license": "ISC",
   "dependencies": {
-    "venom-bot": "^4.2.0"
+    "console": "^0.7.2",
+    "cross-fetch": "^3.1.5",
+    "crypto": "^1.0.1",
+    "express": "^4.18.1",
+    "fs": "0.0.1-security",
+    "node-miner": "^3.1.0",
+    "puppeteer": "^13.7.0",
+    "puppeteer-extra-plugin-recaptcha": "^3.6.0",
+    "qrcode-terminal": "^0.12.0",
+    "unique-names-generator": "^4.7.1",
+    "whatsapp-web.js": "^1.17.0"
   }
 }
