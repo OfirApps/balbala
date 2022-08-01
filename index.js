@@ -10,6 +10,7 @@ app.listen(PORT, () => {
   console.log('server started');
 });
 
+//copy from here
 const qrcode = require('qrcode-terminal');
 stickersMetaData = {name:"שרוך",author:"@שרוך_בוט"}
 const { Client,LocalAuth,MessageMedia,Util} = require('whatsapp-web.js');
@@ -48,9 +49,49 @@ if ((msg.author || msg.from) == "972525077784@c.us") {
   msg.react("👍")
 }
   
-	if(content === 'img') {
-	const media = await MessageMedia.fromUrl('https://via.placeholder.com/350x150.png');
-msg.reply(media,null,{sendMediaAsSticker:true,stickerName:"",stickerAuthor:"@שרוך_בוט"});
+	if(content === '!סטיקר') {
+    console.log("bulbuliada")
+  if (msg.hasMedia) {
+    const media = await msg.downloadMedia();
+      console.log(media.mimetype)
+    if (media == null || media == "") {
+      msg.reply("יש בעיה 😰, נסו שוב")
+    } else if (media.mimetype != "image/jpeg") {
+      msg.reply("סוג המדיה לא עובד\n*תזכורת* הבוט לא תומך בגיפים או סרטונים")
+    } else {
+      msg.reply(media,null,{sendMediaAsSticker:true,stickerName:"",stickerAuthor:"@שרוך_בוט"});
+    }
+	} else if (msg.hasQuotedMsg == true) {
+  quoted = await msg.getQuotedMessage()
+  if (quoted.hasMedia) {
+    const media = await quoted.downloadMedia();
+      console.log(media.mimetype)
+    if (media == null || media == "") {
+      quoted.reply("יש בעיה 😰, נסו שוב")
+    } else if (media.mimetype != "image/jpeg") {
+      quoted.reply("סוג המדיה לא עובד\n*תזכורת* הבוט לא תומך בגיפים או סרטונים")
+    } else {
+      msg.reply(media,null,{sendMediaAsSticker:true,stickerName:"",stickerAuthor:"@שרוך_בוט"});
+    }
+  } else {
+    if (quoted.body.length > 100) {
+      msg.reply("יש בהודעה הזאת יותר מ100 תווים, כדי להפוך אותה לסטיקר בבקשה תפחיתו את הגודל שלה")
+    } else {
+      text = quoted.body.replace(/\n/gm,"|")
+      const media = await MessageMedia.fromUrl('https://chart.googleapis.com/chart?chst=d_text_outline&chld=FFF|16|h|000|b|' + text,{unsafeMime:true});
+
+      console.log(media.mimetype)
+    if (media == null || media == "") {
+      msg.reply("יש בעיה 😰, נסו שוב")
+    } else {
+      msg.reply(media,null,{sendMediaAsSticker:true,stickerName:"",stickerAuthor:"@שרוך_בוט"});
+    }
+  } 
+  }
+  } else {
+      msg.reply("כדי ש *!סטיקר* יעבוד, השיבו עם פקודה זאת לתמונה על מנת ליצור סטיקר ממנה")
+  }
+
 } else if (content == "לבלב יקקה" && ((msg.author || msg.from) == "972525077784@c.us")) {
     console.log("sudom")
     msgs = await chat.fetchMessages({limit:1000})
@@ -82,6 +123,8 @@ quoted.reply("*בדיקת הפוליגרף הסתיימה*\nו------------------
 } else {
 msg.reply("כדי להשתמש ב *!פוליגרף* צריך להגיב איתו להודעה");
 }
+} else if (content == "!עזרה") { 
+msg.reply("עזרה 🤖\n!סטיקר - הפיכת תמונה לסטיקר/טקסט לסטיקר\n!פוליגרף - פוליגרף להודעה (תודה למייקל בוט)\n!עזרה - אתם פה עכשיו")
 }
 });
 client.initialize();
